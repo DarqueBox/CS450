@@ -7,9 +7,24 @@ trainer <- function(trainData)
 }
 
 #A classifier for determining which iris it is
-classifier <- function(data, test)
+classifier <- function(data, test, n = 8)
 {
-   return(data$V5[1])
+   distances <- NULL
+
+   #finds all the distances
+   for(i in 1:nrow(data))
+   {
+      distances[i] <- dist(rbind(data[i,1:4], test), method="euclidean")
+   }
+
+   #attaches the iris type onto the distances
+   results <- data.frame(distances, data[,5])
+
+   #sorts
+   indexes <- order(results[,1], decreasing=F)[1:n]
+
+   #returns the one with the highest frequency
+   return(names(sort(table(results[c(indexes),2]), decreasing=T))[1])
 }
 
 #tests the training data against the test data
