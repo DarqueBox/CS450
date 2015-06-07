@@ -180,7 +180,7 @@ nametree <- function(X, prefix1 = "", prefix2 = "", prefix3 = "", prefix4 = "")
       
       for( i in seq_along(X) ) 
       {
-         cat( if(i<length(X)) prefix1 else prefix3, X[[i]], "\n", sep="" )
+         cat( if(i<length(X)) prefix1 else prefix3, X[[1]], "\n", sep="" )
       	 prefix <- if( i<length(X) ) prefix2 else prefix4
       	 nametree(
             X[[i]], 
