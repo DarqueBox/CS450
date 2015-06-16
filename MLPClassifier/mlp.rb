@@ -207,7 +207,7 @@ class Network
 end
 
 
-#=begin
+=begin
 outfile = "carOutput.csv"
 data = Preprocessing.getFromCSV("../car.data")
 data = Preprocessing.ordDataToInt(data, 0, ["low", "med", "high", "vhigh"])
@@ -216,7 +216,7 @@ data = Preprocessing.ordDataToInt(data, 4, ["small", "med", "big"])
 data = Preprocessing.ordDataToInt(data, 2, [0,1,2,3,4,"5more"])
 data = Preprocessing.ordDataToInt(data, 3, [0,1,2,3,4,"more"])
 data = Preprocessing.ordDataToInt(data, 5, ["low", "med", "high", "vhigh"])
-#=end
+=end
 
 #=begin
 outfile = "irisOutput.csv"
@@ -235,15 +235,15 @@ classifications =  (data.map {|row| row[data[0].length - 1]}).uniq
 trainData = Preprocessing.partition(data, 0.7, true)
 testData  = Preprocessing.partition(data, 0.7, false)
 
-neuronsInLayers = [5]
+neuronsInLayers = [5,5,5,5]
 
 mlp = Network.new(neuronsInLayers, classifications)
 out = mlp.train(trainData, 500)
 mlp.test(testData)
 
-#=begin
+=begin
 CSV.open(outfile, "w") do |csv| 
   csv << out
 end
-#=end
+=end
 
