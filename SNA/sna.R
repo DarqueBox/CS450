@@ -6,6 +6,7 @@ el[,2]=as.character(el[,2])
 g=graph.edgelist(el,directed=FALSE) # turns the edgelist into a 'graph object'
 #jpeg("mommyBlog.jpg")
 #plot(g)
+
 d <- degree(g)
 print("Degree")
 print(sort(d,decreasing=T)[1])
